@@ -65,10 +65,14 @@ def pdf2markdown(path):
 
 	return
 
+def remove_figures_prefix(md_text):
+	# Windows用のバックスラッシュに注意（\\でエスケープ）
+	return re.sub(r'!\[\]\(figures\\', '![](', md_text)
 
 def main():
-	input_path = sys.argv[1]
+		input_path = sys.argv[1]
 	output_path = sys.argv[2]
+
 	# pdfのファイル名を入力された場合
 	if input_path.lower().endswith('.pdf'):
 		print("=== PDFが入力されました ===")
@@ -81,8 +85,12 @@ def main():
 		full_text = f.read()
 		print("markdownの読み込みに成功")	
 
-	paragraphs = split_paragraphs(full_text)
+	# mdファイルを翻訳する前に、obsidian用にパスの書き換え
+	with open(input_path, "w", encoding="utf-8") as out:
+		out.write(remove_figures_prefix(full_text))
 
+	paragraphs = split_paragraphs(full_text)
+	
 	print("=== 翻訳処理開始 ===")
 		
 	with open(output_path, "w", encoding="utf-8") as out:
