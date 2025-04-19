@@ -13,11 +13,6 @@ sys.stdout.reconfigure(encoding='utf-8')
 # 自分で設定してほしい箇所
 openai.api_key = 'ここにapi_keyを貼り付け'
 
-# コマンドラインが苦手な人は
-# sys.argv[1]を入力ファイル名に、sys.argv[2]を最終出力のファイル名に書き換えてください
-input_path = sys.argv[1]
-output_path = sys.argv[2]
-
 # プロンプト改変したい場合はどうぞ
 prompt = "あなたは翻訳ツールです。翻訳内容以外の文章は決して出力しないでください。インライン数式は[$, $]で、ブロック数式は[$$, $$]で囲われています。科学的専門用語、人名は英語表記でお願いします。この表記を変更しないでください。入力された文章を日本語で意訳しなさい。"
 
@@ -72,6 +67,8 @@ def pdf2markdown(path):
 
 
 def main():
+	input_path = sys.argv[1]
+	output_path = sys.argv[2]
 	# pdfのファイル名を入力された場合
 	if input_path.lower().endswith('.pdf'):
 		print("=== PDFが入力されました ===")
