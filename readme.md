@@ -15,3 +15,12 @@ PDF論文をOCRでMarkdownに変換し、OpenAI APIを用いて日本語に意�
 - トークナイザを利用し、API料金の自動見積もり機能をつけた
 - Markdown内の画像リンクを Obsidian 用に自動修正
 - md,txtなど、pdf以外の入力も受けつけ、翻訳のみの利用もできるようにした
+
+## 仕様
+初回はコマンドプロンプトで
+
+<pre><code>'$ pip install openai tiktoken pix2text '</code></pre>
+を実行してください。
+14行めにAPIKeyを書く場所があるので、そこにAPIKeyを入力してください。
+コマンドプロンプト上でtranslate.pyがあるフォルダに移動し、以下のように入力すれば実行できます。
+<pre><code>'$ python translate.py 入力したいファイル 出力してほしい名前.md'</code></pre>
