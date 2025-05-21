@@ -72,7 +72,7 @@ def remove_figures_prefix(md_text):
 	return re.sub(r'!\[\]\(figures\\', '![](', md_text)
 
 def main():
-		input_path = sys.argv[1]
+	input_path = sys.argv[1]
 	output_path = sys.argv[2]
 
 	# pdfのファイル名を入力された場合
