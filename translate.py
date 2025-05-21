@@ -26,6 +26,8 @@ def text2jp(text):
 		return text
 	if text.startswith("[$") and text.endswith("$]"):
 		return text
+	if text.startswith("!["): # 画像リンクの場合
+		return text
 	
 	response = openai.chat.completions.create(
 		model="gpt-4o",
